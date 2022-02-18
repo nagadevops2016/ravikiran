@@ -1,0 +1,8 @@
+---
+- name: 'PostgreSQL Playbook'
+  hosts: all
+  user: root
+
+  roles:
+    - postgresql
+    
