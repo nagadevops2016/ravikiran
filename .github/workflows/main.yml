@@ -12,12 +12,13 @@ jobs:
     - uses: azure/login@v1
       with:
           creds: ${{ secrets.AZURE_STORAGE }}
-
-    - name: Upload to blob storage
-      uses: azure/CLI@v1
+    - name: 'Deploy react app to Azure blob storage'
+      uses: bacongobbler/azure-blob-storage-upload@main
       with:
-        inlineScript: |
-            az storage blob upload-batch --account-name raju1603 --auth-mode key -d '$web' -s .
+          source_dir: './*'
+          connection_string: ${{ secrets.AZURE_STORAGE }} 
+          sync: 'true'
+
    
 
   # Azure logout
