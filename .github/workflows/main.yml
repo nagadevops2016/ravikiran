@@ -1,4 +1,4 @@
-name: Blob storage upload
+name: Blob storage upload to web
 
 on:
     push:
