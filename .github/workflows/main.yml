@@ -14,7 +14,7 @@ jobs:
         dotnet-version: '3.0.100'
     - uses: lauchacarro/Azure-Storage-Action@v1.0
       with:
-        enabled-static-website: 'true'
+       
         folder: 'tests'
         index-document: 'index.html'
         error-document: '404.html' 
