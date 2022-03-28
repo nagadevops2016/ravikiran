@@ -7,20 +7,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: 'Deploy react app to Azure blob storage'
-      uses: bacongobbler/azure-blob-storage-upload@main
+    steps: 
+    - uses: actions/checkout@v1
+    - uses: actions/setup-dotnet@v1
       with:
-          source_dir: './*.*'
-          connection_string: ${{ secrets.AZURE_STORAGE }} 
-          sync: 'true'
-
-   
-
-  # Azure logout
-    - name: logout
-      run: |
-            az logout
-      if: always()
+        dotnet-version: '3.0.100'
+    - uses: lauchacarro/Azure-Storage-Action@v1.0
+      with:
+        enabled-static-website: 'true'
+        folder: 'source'
+        index-document: 'index.html'
+        error-document: '404.html' 
+        connection-string: ${{ secrets.AZURE_STORAGE }}
