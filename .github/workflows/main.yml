@@ -15,7 +15,7 @@ jobs:
     - uses: lauchacarro/Azure-Storage-Action@v1.0
       with:
         enabled-static-website: 'true'
-        folder: 'source'
+        folder: 'tests'
         index-document: 'index.html'
         error-document: '404.html' 
         connection-string: ${{ secrets.AZURE_STORAGE }}
