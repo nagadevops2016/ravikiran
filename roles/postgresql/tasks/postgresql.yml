@@ -23,3 +23,19 @@
     - restart postgresql
   tags:
     - configuration
+ 
+- name: Create postgres user for my app
+    become: yes
+    become_user: postgres
+    postgresql_user:
+      name: "myappuser"
+      password: "supersecretpassword"
+
+- name: Ensure we have access from the new user
+    become: yes
+    become_user: postgres
+    postgresql_privs:
+      db: mydatabase
+      role: myappuser
+      objs: ALL_IN_SCHEMA
+      privs: SELECT,INSERT,UPDATE,DELETE
